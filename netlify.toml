@@ -1,0 +1,5 @@
+[build]
+command = "pip install -r requirements.txt && cd app && python app.py"
+
+[build.environment]
+PYTHON_VERSION = "3.7"
