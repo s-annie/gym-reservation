@@ -2,8 +2,6 @@ from flask import Flask, request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
-from serverless_wsgi import generate_handler
-
 
 TOKEN = "TZvX2e2N777ZZWUbxIZ0N5/4sVkGKVMyVzJ0hBuPUN3VXWu750bWrwhbQzoRy4nx24H1Sa38knAssjl/lYJVUbseTor9jK1UnQOAEYOFAW1j+bq2D1ae213zuMeOWc5YfPz3OSK1CNOhNspkxeuQGAdB04t89/1O/w1cDnyilFU="
 SECRET = "d6d87ccdad6f7b412cc6ce0bccd92186"
