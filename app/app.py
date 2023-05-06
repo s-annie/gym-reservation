@@ -10,7 +10,7 @@ app = Flask(__name__)
 line_bot_api = LineBotApi(TOKEN)
 handler = WebhookHandler(SECRET)
 
-@app.route("/reservation/callback", methods=['POST'])
+@app.route("/", methods=['POST'])
 def callback():
     signature = request.headers['X-Line-Signature']
     body = request.get_data(as_text=True)
