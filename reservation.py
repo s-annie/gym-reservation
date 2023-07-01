@@ -7,14 +7,17 @@ from selenium.webdriver.support.ui import Select
 
 class Reservation:
     def __init__(self):
-        chrome_options = Options()
-        chrome_options.add_argument('--headless')
-        chrome_options.add_argument('--no-sandbox')
-        # path = os.getcwd()
-        self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
-        # self.driver = webdriver.Chrome((path + "/chromedriver"), options=chrome_options)
-        self.driver.get('http://www.net.city.nagoya.jp/sporec/index.html')
-
+        try:
+            chrome_options = Options()
+            chrome_options.add_argument('--headless')
+            chrome_options.add_argument('--no-sandbox')
+            # path = os.getcwd()
+            self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+            # self.driver = webdriver.Chrome((path + "/chromedriver"), options=chrome_options)
+            self.driver.get('http://www.net.city.nagoya.jp/sporec/index.html')
+        except Exception as e:
+            print(e)
+            self.driver = None
 
     def check(self, input_month, input_day):
         place_search = self.driver.find_element(By.XPATH, '//a[@href="https://www.net.city.nagoya.jp/cgi-bin/sp04001"]')
