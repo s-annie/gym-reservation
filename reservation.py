@@ -5,6 +5,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class Reservation:
     def __init__(self):
@@ -20,7 +22,8 @@ class Reservation:
         print(self.driver.title)
 
     def check(self, input_month, input_day):
-        place_search = self.driver.find_element(By.XPATH, '//a[@href="https://www.net.city.nagoya.jp/cgi-bin/sp04001"]')
+        # place_search = self.driver.find_element(By.XPATH, '//a[@href="https://www.net.city.nagoya.jp/cgi-bin/sp04001"]')
+        place_search = WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.XPATH, '//a[@href="https://www.net.city.nagoya.jp/cgi-bin/sp04001"]')))
         place_search.click()
 
         # 種目の選択
