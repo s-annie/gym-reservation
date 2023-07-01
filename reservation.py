@@ -16,6 +16,8 @@ class Reservation:
         self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
         # self.driver = webdriver.Chrome((path + "/chromedriver_linux"), options=chrome_options)
         self.driver.get('http://www.net.city.nagoya.jp/sporec/index.html')
+        time.wait(3)
+        print(self.driver.title)
 
     def check(self, input_month, input_day):
         place_search = self.driver.find_element(By.XPATH, '//a[@href="https://www.net.city.nagoya.jp/cgi-bin/sp04001"]')
