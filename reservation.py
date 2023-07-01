@@ -11,9 +11,9 @@ class Reservation:
         chrome_options = Options()
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--no-sandbox')
-        path = os.getcwd()
-        # self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
-        self.driver = webdriver.Chrome((path + "/chromedriver"), options=chrome_options)
+        # path = os.getcwd()
+        self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+        # self.driver = webdriver.Chrome((path + "/chromedriver"), options=chrome_options)
         self.driver.get('http://www.net.city.nagoya.jp/sporec/index.html')
 
 

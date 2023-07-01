@@ -11,13 +11,13 @@ SECRET = "d6d87ccdad6f7b412cc6ce0bccd92186"
 app = Flask(__name__)
 
 line_bot_api = LineBotApi(TOKEN)
-handler = WebhookHandler(SECRET)
+handle = WebhookHandler(SECRET)
 reservation = Reservation()
 
 # endpoint
 @app.route("/")
 def test():
-    return "<h1>It Works!</h1>"
+    return "It Works!"
 
 # endpoint from linebot
 @app.route("/callback", methods=['GET', 'POST'])
@@ -25,12 +25,12 @@ def callback():
     signature = request.headers['X-Line-Signature']
     body = request.get_data(as_text=True)
     try:
-        handler.handle(body, signature)
+        handle.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
     return 'OK'
 
-@handler.add(MessageEvent, message=TextMessage)
+@handle.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     input = event.message.text
     if not reservation.check(input[4:6], input[6::]):
@@ -44,6 +44,6 @@ def handle_message(event):
             TextSendMessage(text="空いているよー")
         )
 
-if __name__ == "__main__":
-    # app.run(port=int(os.getenv('PORT', 5002)))
-    app.run()
+# if __name__ == "__main__":
+#     # app.run(port=int(os.getenv('PORT', 5002)))
+#     app.run()
