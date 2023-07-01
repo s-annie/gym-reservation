@@ -20,15 +20,15 @@ def test():
     return "It Works!"
 
 # endpoint from linebot
-@app.route("/callback", methods=['GET', 'POST'])
-def callback():
-    signature = request.headers['X-Line-Signature']
-    body = request.get_data(as_text=True)
-    try:
-        handle.handle(body, signature)
-    except InvalidSignatureError:
-        abort(400)
-    return 'OK'
+# @app.route("/callback", methods=['GET', 'POST'])
+# def callback():
+#     signature = request.headers['X-Line-Signature']
+#     body = request.get_data(as_text=True)
+#     try:
+#         handle.handle(body, signature)
+#     except InvalidSignatureError:
+#         abort(400)
+#     return 'OK'
 
 @handle.add(MessageEvent, message=TextMessage)
 def handle_message(event):
