@@ -15,6 +15,8 @@ class Reservation:
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
         path = os.getcwd()
+        binary_path = path + "/chrome-binary.deb"
+        chrome_options.binary_location = binary_path
         # self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
         self.driver = webdriver.Chrome((path + "/chromedriver"), options=chrome_options)
         self.driver.get('http://www.net.city.nagoya.jp/sporec/index.html')
