@@ -1,4 +1,4 @@
 Flask==2.2.2
 line-bot-sdk==1.20.0
-selium==3.141.0
+selenium==3.141.0
 webdriver-manager==3.5.1
