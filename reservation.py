@@ -1,4 +1,5 @@
 import os
+import time
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
@@ -7,17 +8,14 @@ from selenium.webdriver.support.ui import Select
 
 class Reservation:
     def __init__(self):
-        try:
-            chrome_options = Options()
-            chrome_options.add_argument('--headless')
-            chrome_options.add_argument('--no-sandbox')
-            # path = os.getcwd()
-            self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
-            # self.driver = webdriver.Chrome((path + "/chromedriver"), options=chrome_options)
-            self.driver.get('http://www.net.city.nagoya.jp/sporec/index.html')
-        except Exception as e:
-            print(e)
-            self.driver = None
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        path = os.getcwd()
+        # self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+        self.driver = webdriver.Chrome((path + "/chromedriver"), options=chrome_options)
+        time.wait(5)
+        self.driver.get('http://www.net.city.nagoya.jp/sporec/index.html')
 
     def check(self, input_month, input_day):
         place_search = self.driver.find_element(By.XPATH, '//a[@href="https://www.net.city.nagoya.jp/cgi-bin/sp04001"]')
