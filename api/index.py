@@ -44,6 +44,6 @@ def handle_message(event):
             TextSendMessage(text="空いているよー")
         )
 
-# if __name__ == "__main__":
-#     # app.run(port=int(os.getenv('PORT', 5002)))
-#     app.run()
+if __name__ == "__main__":
+    # app.run(port=int(os.getenv('PORT', 5002)))
+    app.run()
