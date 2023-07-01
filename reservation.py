@@ -11,10 +11,10 @@ class Reservation:
         chrome_options = Options()
         chrome_options.add_argument('--headless')
         chrome_options.add_argument('--no-sandbox')
-        path = os.getcwd()
-        # self.driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
-        self.driver = webdriver.Chrome((path + "/chromedriver"), options=chrome_options)
-        time.wait(5)
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        self.driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+        time.wait(1)
         self.driver.get('http://www.net.city.nagoya.jp/sporec/index.html')
 
     def check(self, input_month, input_day):
